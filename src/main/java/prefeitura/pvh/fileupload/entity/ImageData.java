@@ -1,33 +1,30 @@
 package prefeitura.pvh.fileupload.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 
 @Entity
-@Table(name = "tb_image_data")
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Table(name = "ImageData")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ImageData {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String type;
-
     @Lob
     @Column(name = "imagedata", length = 1000)
-    private byte[] data;
-
+    private byte[] imageData;
 }
 
 
