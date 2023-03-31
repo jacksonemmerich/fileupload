@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "2758114b-27b2-4f2c-9724-09f7d17adca6",
+		"name": "fileupload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "650480"
+	},
+	"item": [
+		{
+			"name": "Image_db",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/jackson/Imagens/images.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9191/image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Image_in_filesystem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/jackson/Imagens/images.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9191/image/fileSystem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"image",
+						"fileSystem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Image_db",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/image/64245c0a-6e7d-44f8-850b-be1226106fe3.jpg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"image",
+						"64245c0a-6e7d-44f8-850b-be1226106fe3.jpg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Image_in_filesystem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/image/fileSystem/044f3e12-1c9b-4d84-9366-aea063fed6a5.jpg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"image",
+						"fileSystem",
+						"044f3e12-1c9b-4d84-9366-aea063fed6a5.jpg"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

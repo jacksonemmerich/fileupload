@@ -3,6 +3,7 @@ package prefeitura.pvh.fileupload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -44,13 +45,24 @@ public class FileuploadApplication {
                 .body(uploadImage);
     }
 
-    @GetMapping("/fileSystem/{fileName}")
+    /*@GetMapping("/fileSystem/{fileName}")
     public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String fileName) throws IOException {
         byte[] imageData=service.downloadImageFromFileSystem(fileName);
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("image/png"))
                 .body(imageData);
 
+    }*/
+
+    @GetMapping("/fileSystem/{fileName}")
+    public ResponseEntity<byte[]> downloadImageFromFileSystem(@PathVariable String fileName) throws IOException {
+        byte[] images = service.downloadImageFromFileSystem(fileName);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        headers.setContentLength(images.length);
+
+        return new ResponseEntity<>(images, headers, HttpStatus.OK);
     }
 
     public static void main(String[] args) {
