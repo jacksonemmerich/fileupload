@@ -9,7 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import prefeitura.pvh.fileupload.service.StorageService;
+import prefeitura.pvh.fileupload.service.FileDataService;
+import prefeitura.pvh.fileupload.service.ImageService;
 
 import java.io.IOException;
 
@@ -19,7 +20,9 @@ import java.io.IOException;
 public class FileuploadApplication {
 
     @Autowired
-    private StorageService service;
+    private ImageService service;
+    @Autowired
+    private FileDataService fileDataService;
 
     @PostMapping
     public ResponseEntity<?> uploadImage(@RequestParam("image")MultipartFile file) throws IOException {
@@ -38,9 +41,8 @@ public class FileuploadApplication {
     }
 
     @PostMapping("/fileSystem")
-    public ResponseEntity<?> uploadImageToFileSystem
-            (@RequestParam("image")MultipartFile file) throws IOException {
-        String uploadImage = service.uploadToFileSystem(file);
+    public ResponseEntity<?> uploadImageToFileSystem(@RequestParam("image")MultipartFile file) throws IOException {
+        String uploadImage = fileDataService.uploadToFileSystem(file);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);
     }
@@ -56,13 +58,10 @@ public class FileuploadApplication {
 
     @GetMapping("/fileSystem/{fileName}")
     public ResponseEntity<byte[]> downloadImageFromFileSystem(@PathVariable String fileName) throws IOException {
-        byte[] images = service.downloadImageFromFileSystem(fileName);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
-        headers.setContentLength(images.length);
-
-        return new ResponseEntity<>(images, headers, HttpStatus.OK);
+        byte[] imageData=fileDataService.downloadImageFromFileSystem(fileName);
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.valueOf("image/png"))
+                .body(imageData);
     }
 
     public static void main(String[] args) {

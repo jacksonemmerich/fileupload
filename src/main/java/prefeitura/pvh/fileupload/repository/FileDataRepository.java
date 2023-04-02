@@ -6,6 +6,6 @@ import prefeitura.pvh.fileupload.entity.FileData;
 import java.util.Optional;
 
 public interface FileDataRepository extends JpaRepository<FileData, Long> {
-    Optional<FileData> findByName(String name);
+    Optional<FileData> findByName(String filename);
 
 }
