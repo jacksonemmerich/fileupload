@@ -1,4 +1,4 @@
-## fileupload in database and FileSystem(storage) with Springboot and Java 17 
+## File upload in database and file system storage with Spring Boot and Java 17 
 
 * Desenvolvi um projeto que permite o upload e download de arquivos. Para isso, utilizei duas abordagens diferentes: na primeira, salvei a imagem diretamente no banco de dados e, na segunda, salvei somente os dados no banco e o arquivo em uma pasta específica no servidor.”
 
