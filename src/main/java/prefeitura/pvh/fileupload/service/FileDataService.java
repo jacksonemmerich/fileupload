@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import prefeitura.pvh.fileupload.entity.FileData;
 import prefeitura.pvh.fileupload.repository.FileDataRepository;
+import prefeitura.pvh.fileupload.service.exception.ImageServiceException;
 
 import javax.transaction.Transactional;
 import java.io.File;
@@ -30,7 +31,6 @@ public class FileDataService {
 
 
     public String uploadToFileSystem(MultipartFile file) throws IOException {
-        //String extension = FilenameUtils.getExtension(file.getOriginalFilename());
         String generatedName = generateFilename(file.getOriginalFilename());
         String filePath = FOLDER_PATH + generatedName;
         Path path = Paths.get(filePath);
@@ -62,7 +62,7 @@ public class FileDataService {
                 extension.equalsIgnoreCase("jpeg")) {
             return UUID.randomUUID().toString() + "." + extension;
         } else {
-            throw new RuntimeException("Tipo de arquivo inválido");
+            throw new ImageServiceException("Tipo de arquivo inválido");
         }
     }
 }

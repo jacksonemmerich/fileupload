@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import prefeitura.pvh.fileupload.entity.ImageData;
 import prefeitura.pvh.fileupload.repository.ImageRepository;
+import prefeitura.pvh.fileupload.service.exception.ImageServiceException;
 import prefeitura.pvh.fileupload.util.ImageUtils;
 
 import javax.transaction.Transactional;
@@ -43,7 +44,7 @@ public class ImageService {
         if (extension.equalsIgnoreCase("pdf") || extension.equalsIgnoreCase("png") || extension.equalsIgnoreCase("jpg")) {
             return UUID.randomUUID().toString() + "." + extension;
         } else {
-            throw new RuntimeException("Tipo de arquivo inválido");
+            throw new ImageServiceException("Tipo de arquivo inválido");
         }
     }
 }
