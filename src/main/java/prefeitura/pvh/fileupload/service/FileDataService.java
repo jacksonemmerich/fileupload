@@ -56,7 +56,10 @@ public class FileDataService {
 
     private String generateFilename(String originalFilename) {
         String extension = FilenameUtils.getExtension(originalFilename);
-        if (extension.equalsIgnoreCase("pdf") || extension.equalsIgnoreCase("png") || extension.equalsIgnoreCase("jpg")) {
+        if (extension.equalsIgnoreCase("pdf") ||
+                extension.equalsIgnoreCase("png") ||
+                extension.equalsIgnoreCase("jpg")||
+                extension.equalsIgnoreCase("jpeg")) {
             return UUID.randomUUID().toString() + "." + extension;
         } else {
             throw new RuntimeException("Tipo de arquivo inválido");
