@@ -1,4 +1,4 @@
-## File upload in database and file system storage with Spring Boot and Java 17 
+# File upload in database and file system storage with Spring Boot and Java 17 
 
 * Desenvolvi um projeto que permite o upload e download de arquivos. Para isso, utilizei duas abordagens diferentes: na primeira, salvei a imagem diretamente no banco de dados e, na segunda, salvei somente os dados no banco e o arquivo em uma pasta específica no servidor.”
 
@@ -31,4 +31,7 @@ ENDPOINTS:
       * 2 - defina o valor image
       * 3 - E defina como File o tipo de envio de arquivo.
       * 4 - escolha o arquivo dos tipos jpeg, jpg, png ou pdf, outro tipo não será aceito, você pode alterar os tipos aceitos no projeto.
-    
+
+## Fontes: 
+* https://www.youtube.com/watch?v=XUL60-Ke-L8
+* https://www.youtube.com/watch?v=7L1BSy5pnGo
